@@ -1,0 +1,10 @@
+$bg-color: #e6e6ff;
+
+body {
+    background: $bg-color;
+    padding: 5px 10px 0px 10px;
+}
+
+.App > * {
+    margin-bottom: 1em;
+}

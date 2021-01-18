@@ -1,0 +1,15 @@
+.Banner {
+    border: 2px solid black;
+    background: white;
+    height: 10VH;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.Banner > * {
+    position: relative;
+    transform: translateY(25%);
+    padding-left: 15px;
+}
