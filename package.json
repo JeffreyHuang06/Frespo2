@@ -45,6 +45,8 @@
     "typescript": "^4.1.3"
   },
   "react-dotenv": {
-    "whitelist": ["API_PATH"]
+    "whitelist": [
+      "API_PATH"
+    ]
   }
 }
