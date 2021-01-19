@@ -1,7 +1,7 @@
 <?php
     // architecture:
     // columns: title content date_posted hash
-    require './credentials';
+    require './credentials.php';
 
     $conn = new mysqli($servername, $username, $password, $dbname . 'feed');
 

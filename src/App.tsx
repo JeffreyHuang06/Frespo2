@@ -5,6 +5,8 @@ import Banner from './components/Banner'
 import Feed from './components/Feed'
 import FeedForm from './components/FormFeed'
 
+import getFeed from './getpost/getFeed'
+
 import './css/Generic.scss'
 
 const App = () => {
@@ -17,6 +19,8 @@ const App = () => {
 
             <Feed />
             <FeedForm />
+
+            <button onClick={getFeed}>Click me</button>
         </div>
     );
 }
