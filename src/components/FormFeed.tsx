@@ -3,8 +3,8 @@ import React, {useState} from 'react'
 import postFeed from '../getpost/postFeed'
 
 const FormFeed = () => {
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
+    const [title, setTitle] = useState<string>('');
+    const [content, setContent] = useState<string>('');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>, field: string) => {
         switch (field) {
@@ -18,13 +18,13 @@ const FormFeed = () => {
         }
     }
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         // lol i need some form validation
-        postFeed(title, content);
+        const res = await postFeed(title, content);
     }
-    
+
     return (
         <form className='FormFeed' onSubmit={handleSubmit}>
             Title: <input
