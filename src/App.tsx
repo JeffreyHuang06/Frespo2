@@ -5,22 +5,19 @@ import Banner from './components/Banner'
 import Feed from './components/Feed'
 import FeedForm from './components/FormFeed'
 
-import getFeed from './getpost/getFeed'
-
 import './css/Generic.scss'
 
 const App = () => {
     console.log(env.API_PATH);
+
     return (
         <div className='App'>
-            <Banner 
-            name="Frespo"
-            />
+            <Banner name="Frespo"/>
 
-            <Feed />
+            <React.Suspense fallback={<div>Loading...</div>}>
+                <Feed />
+            </React.Suspense>
             <FeedForm />
-
-            <button onClick={getFeed}>Click me</button>
         </div>
     );
 }
