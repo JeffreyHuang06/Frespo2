@@ -12,7 +12,9 @@ const getFeed = async() => {
         url: `${env.API_PATH}/getFeedItems.php`
     });
 
-    console.log(res);
+    // console.log(res,res.data);
+
+    return res;
 }
 
 export default getFeed;
