@@ -1,20 +1,20 @@
 import axios from 'axios'
 import env from  'react-dotenv'
 
-export interface FeedType {
+export interface FeedItemType {
     title: string;
-    content: string
+    content: string;
+    date: string;
+    hash: string;
 }
 
-const getFeed = async() => {
+const getFeed = async(): Promise<FeedItemType[]> => {
     const res = await axios({
         method: 'get',
         url: `${env.API_PATH}/getFeedItems.php`
     });
 
-    // console.log(res,res.data);
-
-    return res;
+    return JSON.parse(res.data.slice(0,-2) + "]");
 }
 
 export default getFeed;

@@ -23,7 +23,7 @@
             $hash = $row['hash'];
 
             $echoresult .= json_encode([
-                "school" => $title,
+                "title" => $title,
                 "content" => $content,
                 "date" => $date,
                 "hash" => $hash
