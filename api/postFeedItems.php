@@ -9,7 +9,7 @@
     function writeSQL($t, $c){
         require './credentials.php';
 
-        $conn = new mysqli($servername, $username, $password, $dbname);
+        $conn = new mysqli($servername, $username, $password, $dbname. "feed");
 
         if ($conn->connect_error){
             die("Connection failed:" . $conn->connect_error);
