@@ -14,19 +14,25 @@
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0){
+        $echoresult = "[";
+
         while ($row = $result->fetch_assoc()){
             $title = html_entity_decode($row['title']);
             $content = html_entity_decode($row['content']);
             $date = $row['date_posted'];
             $hash = $row['hash'];
 
-            echo "{
-                'school': $title,
-                'content': $content,
-                'date': $date,
-                'hash': $hash
-            }";
+            $echoresult .= json_encode([
+                "school" => $title,
+                "content" => $content,
+                "date" => $date,
+                "hash" => $hash
+            ]) . ',';
         }
+
+        $echoresult .= "]";
+
+        echo $echoresult;
     } else {
         echo '0 results';
     }
