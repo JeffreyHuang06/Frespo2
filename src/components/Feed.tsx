@@ -1,17 +1,19 @@
 import React from 'react'
 
+import getFeed from '../getpost/getFeed'
+
 import FeedItem from './feed/FeedItem'
+import Header from './feed/Header'
 
 import './feed/Feed.scss'
 
 const Feed = () => {
+
     return (
         <>
-            <div className='Feed'>
-                <div className='header'>
-                    <h1>Feed</h1>
-                </div>
+            <Header text="Feed" />
 
+            <div className='Feed'>
                 <FeedItem title='hi' content='hiii'/>
             </div>
         </>

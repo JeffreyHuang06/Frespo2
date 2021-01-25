@@ -1,0 +1,14 @@
+.Header {
+    border: 2px solid black;
+    background: white;
+    width: 30%;
+    padding: 0px;
+    padding-left: 15px;
+
+    margin: 0 auto;
+    transform: translateX(-55%);
+}
+
+.Header * {
+    margin: 0px;
+}
