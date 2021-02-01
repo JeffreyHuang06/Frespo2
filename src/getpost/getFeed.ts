@@ -11,10 +11,10 @@ export interface FeedItemType {
 const getFeed = async(): Promise<FeedItemType[]> => {
     const res = await axios({
         method: 'get',
-        url: `${env.API_PATH}/getFeedItems.php`
+        url: `${env.API_PATH}/getFeedItems.php`,
     });
-
-    return JSON.parse(res.data.slice(0,-2) + "]");
+    console.log(res.data);
+    return JSON.parse(res.data);
 }
 
 export default getFeed;

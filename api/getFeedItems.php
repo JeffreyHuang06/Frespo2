@@ -30,6 +30,7 @@
             ]) . ',';
         }
 
+        $echoresult = rtrim($echoresult, ",");
         $echoresult .= "]";
 
         echo $echoresult;
