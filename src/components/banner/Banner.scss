@@ -21,12 +21,14 @@
     }
 }
 
-.Banner > svg {
+.Banner svg {
     fill: black;
     transition: 125ms;
 
     &:hover {
         fill: Generic.$purple2;
+        width: 3em;
+        height: 3em;
     }
 }
 
