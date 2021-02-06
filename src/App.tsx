@@ -6,7 +6,8 @@ import Feed from './components/Feed'
 import FormFeed from './components/FormFeed'
 import About from  './components/About'
 
-import {Switch, Route, Redirect} from 'react-router-dom'
+import {Switch, Route} from 'react-router-dom'
+import FallThrough from './components/FallThrough'
 
 import './css/Generic.scss'
 
@@ -40,9 +41,8 @@ const App = () => {
                     </>
                 </Route>
 
-                <Route path="/">
-                    <Redirect to="/home" />
-                </Route>
+                {/* For all the redirects */}
+                <Route exact path="/" component={FallThrough} />
             </Switch>
         </div>
     );
