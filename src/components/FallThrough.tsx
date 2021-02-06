@@ -10,6 +10,10 @@ const FallThrough: React.FC = () => {
             retjsx = <Redirect to="/home" />;
             break;
         
+        case "?i=1":
+            retjsx = <Redirect to="/home" />;
+            break;
+        
         case "?home":
             retjsx = <Redirect to="/home" />;
             break;
@@ -23,7 +27,7 @@ const FallThrough: React.FC = () => {
             break;
         
         default:
-            retjsx = <Redirect to="/404.html" />
+            retjsx = null;
             break;
     }
     
