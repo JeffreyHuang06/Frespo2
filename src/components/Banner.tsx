@@ -10,11 +10,11 @@ interface Props {
     name: string
 }
 
-const setHref = (href: string) => {
-    return () => {
-        document.location.href = href;
-    }
-}
+// const setHref = (href: string) => {
+//     return () => {
+//         document.location.href = href;
+//     }
+// }
 
 const Banner: React.FC<Props> = ({name}) => {
     const [hovered, setHovered] = useState<string>("");
@@ -40,7 +40,7 @@ const Banner: React.FC<Props> = ({name}) => {
 
             <div className='Banner'>
                 <Link to='/home'>
-                    <Icon src={logo}/>
+                    <Icon src={logo} title="Home" />
                 </Link>
 
                 <h1>{name}</h1>
