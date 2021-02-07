@@ -6,14 +6,12 @@ import Feed from './components/Feed'
 import FormFeed from './components/FormFeed'
 import About from  './components/About'
 
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 import FallThrough from './components/FallThrough'
 
 import './css/Generic.scss'
 
 const App = () => {
-    console.log(env.API_PATH);
-
     return (
         <div className='App'>
             <Switch>
@@ -41,8 +39,20 @@ const App = () => {
                     </>
                 </Route>
 
+                <Route path="/404">
+                    <FallThrough />
+                </Route>
+
+                <Route exact path="/">
+                    <Redirect to="/home" />
+                </Route>
+
+                <Route path="/">
+                    <FallThrough />
+                </Route>
+
                 {/* For all the redirects */}
-                <Route exact path="/" component={FallThrough} />
+                {/* <Route exact path="/" component={FallThrough} /> */}
             </Switch>
         </div>
     );
