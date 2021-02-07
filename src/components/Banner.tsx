@@ -4,7 +4,7 @@ import Icon from './banner/Icon'
 
 import './banner/Banner.scss'
 
-import logo from '../img/favicon.png'
+import logo from '../img/favicon.svg'
 
 interface Props {
     name: string
@@ -40,7 +40,7 @@ const Banner: React.FC<Props> = ({name}) => {
 
             <div className='Banner'>
                 <Link to='/home'>
-                    <Icon src={logo} title="Home" />
+                    <Icon src={logo} title="Home" width={64} height={64}/>
                 </Link>
 
                 <h1>{name}</h1>
