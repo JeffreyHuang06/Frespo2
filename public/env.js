@@ -1,3 +1,3 @@
 window.env = {
-  "API_PATH": "http://frespo.epizy.com/api"
+  "API_PATH": "https://frespo.epizy.com/api"
 };
