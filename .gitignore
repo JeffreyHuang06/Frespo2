@@ -26,3 +26,6 @@ yarn-error.log*
 
 credentials.php
 .eslintcache
+
+.keys
+*.pem
