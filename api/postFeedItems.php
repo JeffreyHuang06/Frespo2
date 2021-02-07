@@ -1,5 +1,4 @@
 <?php
-
     header("Access-Control-Allow-Origin: *");
     header('Access-Control-Allow-Headers: Content-Type');
 
@@ -9,9 +8,15 @@
     function writeSQL($t, $c){
         require './credentials.php';
 
-        $conn = new mysqli($servername, $username, $password, $dbname. "feed");
+        // $conn = mysqli_init();
+        // $conn -> ssl_set("key.pem","cert.pem","cacert.pem", NULL, NULL);
 
-        if ($conn->connect_error){
+        // if(!$conn -> real_connect($servername, $username, $password, $dbname . 'feed')){
+        //     die("Connect error: " . mysqli_connect_error());
+        // }
+        $conn = new mysqli($servername, $username, $password, $dbname . "feed");
+
+        if ($conn->connect_error) {
             die("Connection failed:" . $conn->connect_error);
         }
 

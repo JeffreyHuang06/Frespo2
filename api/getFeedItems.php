@@ -3,11 +3,21 @@
     // columns: title content date_posted hash
     require './credentials.php';
 
-    $conn = new mysqli($servername, $username, $password, $dbname . 'feed');
+    // $conn = mysqli_init();
+    // if (!$conn){
+    //     die("Init error");
+    // }
 
-    if ($conn->connect_error){
-        echo $conn->connect_error;
-        die("Connection failed" . $conn->connect_error);
+    // $conn -> ssl_set("key.pem", "cert.pem", NULL, NULL, NULL);
+
+    // if(!$conn -> real_connect($servername, $username, $password, $dbname . 'feed')){
+    //     die("Connect error:" . mysqli_connect_error());
+    // }
+
+    $conn = new mysqli($servername, $username, $password, $dbname . "feed");
+
+    if ($conn->connect_error) {
+        die("Connection failed:" . $conn->connect_error);
     }
 
     $sql = "SELECT * FROM `feed` ORDER BY date_posted DESC";
