@@ -1,5 +1,4 @@
 import React from 'react'
-import env from "react-dotenv"
 
 import Banner from './components/Banner'
 import Feed from './components/Feed'
@@ -40,7 +39,10 @@ const App = () => {
                 </Route>
 
                 <Route path="/404">
-                    <FallThrough />
+                    <>
+                        <Banner name="Error 404" />
+                        <FallThrough />
+                    </>
                 </Route>
 
                 <Route exact path="/">
@@ -48,7 +50,7 @@ const App = () => {
                 </Route>
 
                 <Route path="/">
-                    <FallThrough />
+                    <Redirect to="/404" />
                 </Route>
 
                 {/* For all the redirects */}

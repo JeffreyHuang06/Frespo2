@@ -8,8 +8,8 @@ const FallThrough: React.FC = () => {
 
     return (
         <div className="FallThrough">
-            Error 404 <br />
-            Page not found
+            <p>Error 404</p>
+            <p>Page not found</p>
         </div>
     );
 }
