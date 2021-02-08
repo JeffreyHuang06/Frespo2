@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useRouteMatch} from 'react-router-dom'
 import Icon from './banner/Icon'
 
 import './banner/Banner.scss'
@@ -19,18 +19,38 @@ interface Props {
 const Banner: React.FC<Props> = ({name}) => {
     const [hovered, setHovered] = useState<string>("");
     const [styleString, setStyleString] = useState<string>("");
+    const match: string = useRouteMatch().path;
 
     const hoverOff = () => {
         setHovered("");
     }
 
+    const homeRefresh = () => {
+        if (match === "/home"){
+            window.location.reload();
+        }
+    }
+
     useEffect(() => {
-        let newStyleString: string = "";
-        ["POST", "ABOUT"].forEach((name: string) => {
-            newStyleString += `#${name}BTN {fill: ${hovered !== name && hovered !== "" ? "gray" : "auto"};}\n`;
-        })
-        setStyleString(newStyleString);
-    }, [hovered]);
+        if (match === "/home" || hovered !== ""){
+            let newStyleString: string = "";
+            ["POST", "ABOUT"].forEach((name: string) => {
+                newStyleString += `#${name}BTN {fill: ${hovered !== name && hovered !== "" ? "gray" : "auto"};}\n`;
+            })
+            setStyleString(newStyleString);
+        } else {
+            let newStyleString: string = "";
+            const matchSlash: string = match.slice(1).toUpperCase();
+
+            ["POST", "ABOUT"].forEach((name: string) => {
+                if (matchSlash === name)
+                    newStyleString += `#${name}BTN {fill: #cc00cc; width: 3em; height: 3em;}\n`;
+                else 
+                    newStyleString += `#${name}BTN {fill: gray;}\n`;
+            })
+            setStyleString(newStyleString);
+        }
+    }, [hovered, match]);
 
     return (
         <>
@@ -40,7 +60,9 @@ const Banner: React.FC<Props> = ({name}) => {
 
             <div className='Banner'>
                 <Link to='/home'>
-                    <Icon src={logo} title="Home" width={64} height={64}/>
+                    <div onClick={homeRefresh}>
+                        <Icon src={logo} title="Home" width={64} height={64}/>
+                    </div>
                 </Link>
 
                 <h1>{name}</h1>
