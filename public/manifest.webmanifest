@@ -9,19 +9,19 @@
   "description": "Frespo: the PWA",
   "icons": [
     {
-      "src": "icons/favicon192.png",
+      "src": "https://pwa-resource-hosting.herokuapp.com/imgs/favicon192.png",
       "sizes": "192x192"
     },
     {
-      "src": "icons/favicon512.png",
+      "src": "https://pwa-resource-hosting.herokuapp.com/imgs/favicon512.png",
       "sizes": "512x512"
     },
     {
-      "src": "apple-touch-icon.png",
+      "src": "https://pwa-resource-hosting.herokuapp.com/imgs/apple-touch-icon.png",
       "sizes": "180x180"
     },
     {
-      "src": "icons/favicon.svg",
+      "src": "https://pwa-resource-hosting.herokuapp.com/imgs/favicon.svg",
       "purpose": "any maskable"
     }
   ]
