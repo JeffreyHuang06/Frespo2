@@ -25,8 +25,11 @@
 
     if ($result->num_rows > 0){
         $echoresult = "[";
+        $hasrows = false;
 
         while ($row = $result->fetch_assoc()){
+            $hasrows = true;
+
             $title = html_entity_decode($row['title']);
             $content = html_entity_decode($row['content']);
             $date = $row['date_posted'];
@@ -43,9 +46,11 @@
         $echoresult = rtrim($echoresult, ",");
         $echoresult .= "]";
 
-        echo $echoresult;
+        if ($hasrows) echo $echoresult;
+        else echo "null";
+
     } else {
-        echo '0 results';
+        echo "null";
     }
 
     $conn->close();

@@ -13,8 +13,15 @@ const Feed = () => {
     useEffect(() => {
         (
             async() => {
-                const res = await getFeed();
-                setFeedItems(res);
+                const res: FeedItemType[] | null = await getFeed();
+                console.log(res);
+                if (res !== null) setFeedItems(res);
+                else setFeedItems([{
+                    title: "No posts made",
+                    content: "",
+                    date: "Null",
+                    hash: "Null"
+                }]);
             }
         )();
     }, []);
@@ -23,7 +30,7 @@ const Feed = () => {
         <>
             <Header text="Feed" />
 
-            <div className='Feed'>
+            <div className='body Feed'>
                 {feedItems.map(({title, content, date, hash}) => 
                     <FeedItem
                         title={title}

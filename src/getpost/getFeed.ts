@@ -8,12 +8,12 @@ export interface FeedItemType {
     hash: string;
 }
 
-const getFeed = async(): Promise<FeedItemType[]> => {
-    const res = await axios({
+const getFeed = async(): Promise<FeedItemType[] | null> => {
+    let res: any = null
+    res = await axios({
         method: 'get',
         url: `${env.API_PATH}/getFeedItems.php`,
     });
-    console.log(res.data, "resdata");
 
     return res.data;
 }
