@@ -8,12 +8,6 @@
     function writeSQL($t, $c){
         require './credentials.php';
 
-        // $conn = mysqli_init();
-        // $conn -> ssl_set("key.pem","cert.pem","cacert.pem", NULL, NULL);
-
-        // if(!$conn -> real_connect($servername, $username, $password, $dbname . 'feed')){
-        //     die("Connect error: " . mysqli_connect_error());
-        // }
         $conn = new mysqli($servername, $username, $password, $dbname . "feed");
 
         if ($conn->connect_error) {
