@@ -22,27 +22,38 @@ const FormFeed = () => {
         e.preventDefault();
 
         // lol i need some form validation
-        const res = await postFeed(title, content);
+        /*const res = await*/ postFeed(title, content);
     }
 
     return (
-        <form className='FormFeed' onSubmit={handleSubmit}>
-            Title: <input
-                    type='text'
-                    name='title'
-                    value={title}
-                    onChange={e => {handleChange(e, 'title')}}
-                    required/>
+        <>
+            <div className="body">
+                <form className='FormFeed' onSubmit={handleSubmit}>
+                    <p className="titleinput">Title:</p>
+                    <input
+                        type='text'
+                        name='title'
+                        value={title}
+                        onChange={e => {handleChange(e, 'title')}}
+                        autoComplete='off'
+                        required
+                    />
 
-            Content:    <input
+                    <p className="titleinput">Content:</p>
+                    <input
                         type="text"
                         name="content"
                         value={content}
                         onChange={e => {handleChange(e, 'content')}}
-                        required/>
+                        autoComplete='off'
+                        placeholder="Optional"
+                    />
 
-            <button type="submit">Submit</button>
-        </form>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+
+        </>
     )
 }
 
