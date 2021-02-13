@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useRouteMatch} from 'react-router-dom'
+import { Link, useLocation} from 'react-router-dom'
 import Icon from './banner/Icon'
 
 import './banner/Banner.scss'
@@ -19,7 +19,7 @@ interface Props {
 const Banner: React.FC<Props> = ({name}) => {
     const [hovered, setHovered] = useState<string>("");
     const [styleString, setStyleString] = useState<string>("");
-    const match: string = useRouteMatch().path;
+    const match: string = useLocation().pathname;
 
     const hoverOff = () => {
         setHovered("");
@@ -31,25 +31,26 @@ const Banner: React.FC<Props> = ({name}) => {
         }
     }
 
+    // this code is written so terribly
     useEffect(() => {
+        let newStyleString: string = "";
+
         if (match === "/home" || hovered !== ""){
-            let newStyleString: string = "";
             ["POST", "ABOUT"].forEach((name: string) => {
                 newStyleString += `#${name}BTN {fill: ${hovered !== name && hovered !== "" ? "gray" : "auto"};}\n`;
             })
-            setStyleString(newStyleString);
         } else {
-            let newStyleString: string = "";
             const matchSlash: string = match.slice(1).toUpperCase();
 
             ["POST", "ABOUT"].forEach((name: string) => {
                 if (matchSlash === name)
                     newStyleString += `#${name}BTN {fill: #cc00cc; width: 3em; height: 3em;}\n`;
                 else 
-                    newStyleString += `#${name}BTN {fill: gray;}\n`;
+                    newStyleString += `#${name}BTN {fill: gray; }\n`;
             })
-            setStyleString(newStyleString);
         }
+
+        setStyleString(newStyleString);
     }, [hovered, match]);
 
     return (
