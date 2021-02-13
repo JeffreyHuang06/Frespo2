@@ -1,14 +1,23 @@
 import React, {useState, useEffect} from 'react'
+import FeedItem from './feed/FeedItem'
+
+import {useSetRecoilState} from 'recoil'
+import BodyTextAtom, {BodyTextTypes} from '../state/bodyTextAtom'
 
 import getFeed, {FeedItemType} from '../getpost/getFeed'
-
-import FeedItem from './feed/FeedItem'
-import Header from './feed/Header'
 
 import './feed/Feed.scss'
 
 const Feed = () => {
     const [feedItems, setFeedItems] = useState<FeedItemType[]>([]);
+    const setBodyText = useSetRecoilState<BodyTextTypes>(BodyTextAtom);
+
+    useEffect(() => {
+        setBodyText({
+            bannerText: "Frespo",
+            headerText: "Feed"
+        });
+    }, []);
 
     useEffect(() => {
         (
@@ -28,8 +37,6 @@ const Feed = () => {
 
     return (
         <>
-            <Header text="Feed" />
-
             <div className='body Feed'>
                 {feedItems.map(({title, content, date, hash}) => 
                     <FeedItem

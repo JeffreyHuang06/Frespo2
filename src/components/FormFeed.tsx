@@ -1,10 +1,21 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+
+import {useSetRecoilState} from 'recoil'
+import BodyTextAtom, {BodyTextTypes} from '../state/bodyTextAtom'
 
 import postFeed from '../getpost/postFeed'
 
 const FormFeed = () => {
     const [title, setTitle] = useState<string>('');
     const [content, setContent] = useState<string>('');
+    const setBodyText = useSetRecoilState<BodyTextTypes>(BodyTextAtom);
+
+    useEffect(() => {
+        setBodyText({
+            bannerText: "Post",
+            headerText: "Make a Post"
+        });
+    }, []);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>, field: string) => {
         switch (field) {

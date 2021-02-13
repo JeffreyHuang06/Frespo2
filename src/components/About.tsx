@@ -1,7 +1,19 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './about/About.scss'
 
+import {useSetRecoilState} from 'recoil'
+import BodyTextAtom, {BodyTextTypes} from '../state/bodyTextAtom'
+
 export default function About() {
+    const setBodyText = useSetRecoilState<BodyTextTypes>(BodyTextAtom);
+
+    useEffect(() => {
+        setBodyText({
+            bannerText: "About",
+            headerText: ""
+        });
+    }, []);
+
     return (
         <div className="About">
             <pre id="abouttext">

@@ -1,10 +1,21 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Redirect } from 'react-router'
 
-const FallThrough: React.FC = () => {
-    const url = "" + document.location.href.split('/').pop();
+import {useSetRecoilState} from 'recoil'
+import BodyTextAtom, {BodyTextTypes} from '../state/bodyTextAtom'
 
-    if (url !== "404") return <Redirect to="/404" />
+const FallThrough: React.FC = () => {
+    const setBodyText = useSetRecoilState<BodyTextTypes>(BodyTextAtom);
+
+    useEffect(() => {
+        setBodyText({
+            bannerText: "Error 404",
+            headerText: ""
+        });
+    }, []);
+
+    const url = "" + document.location.href.split('/').pop();
+    if (url !== "404") return <Redirect to="/404" />;
 
     return (
         <div className="FallThrough">
