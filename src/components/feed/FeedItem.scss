@@ -2,10 +2,14 @@
     border: 2px solid black;
     width: 90%;
     padding-left: 1em;
-}
-.FeedItem .title {
 
-}
-.FeedItem .content {
-    
+    & > * {
+        word-wrap: break-word;
+    }
+    // & > .title {
+
+    // }
+    // & > .content {
+
+    // }
 }
