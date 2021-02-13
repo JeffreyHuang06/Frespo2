@@ -9,3 +9,13 @@ body {
 .App > * {
     margin-bottom: 1em;
 }
+
+$feed-width: 70%;
+.body {
+    width: $feed-width;
+    border: 2px solid black;
+    background: white;
+
+    margin: 0 auto;
+    padding: 1em;
+}
