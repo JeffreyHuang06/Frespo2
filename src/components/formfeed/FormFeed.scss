@@ -1,0 +1,52 @@
+@use '../../css/Generic.scss';
+
+$input-width: 25vw;
+$title-input-height: 30px;
+$content-input-height: 20px;
+
+.FormFeed {
+    & input {
+        outline: none;
+        width: $input-width;
+
+        border-radius: .25em;
+        border-color: white;
+        border-style: solid;
+        transition: 200ms;
+
+        &:hover, &:focus {
+            border-color: black;
+        }
+        
+        &#titleInput {
+            height: $title-input-height;
+        }
+        &#contentInput {
+            height: $content-input-height;
+        }
+    }
+
+    & > * {
+        margin-bottom: 10px;
+    }
+}
+
+.before {
+    &-title::before, &-content:before {
+        content: "";
+        display: block;
+        position: absolute;
+
+        width: $input-width;
+        border-bottom: 2px black solid;
+        pointer-events: none;
+    }
+
+    &-title::before {
+        height: $title-input-height;
+    }
+
+    &-content::before {
+        height: $content-input-height;
+    }
+}
