@@ -29,3 +29,5 @@ credentials.php
 
 .keys
 *.pem
+
+dev/
