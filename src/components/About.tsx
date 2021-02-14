@@ -12,6 +12,7 @@ export default function About() {
             bannerText: "About",
             headerText: ""
         });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

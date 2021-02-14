@@ -12,6 +12,7 @@ const FallThrough: React.FC = () => {
             bannerText: "Error 404",
             headerText: ""
         });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const url = "" + document.location.href.split('/').pop();

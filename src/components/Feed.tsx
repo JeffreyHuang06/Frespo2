@@ -17,6 +17,7 @@ const Feed = () => {
             bannerText: "Frespo",
             headerText: "Feed"
         });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
