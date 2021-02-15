@@ -37,15 +37,16 @@ const Banner: React.FC<Props> = ({name}) => {
     // this code is written so terribly
     useEffect(() => {
         let newStyleString: string = "";
+        const btns: string[] = ["POST", "ABOUT", "LOGIN"];
 
         if (match === "/home" || hovered !== ""){
-            ["POST", "ABOUT"].forEach((name: string) => {
+            btns.forEach((name: string) => {
                 newStyleString += `#${name}BTN {fill: ${hovered !== name && hovered !== "" ? "gray" : "auto"};}`;
             })
         } else {
             const matchSlash: string = match.slice(1).toUpperCase();
 
-            ["POST", "ABOUT", "LOGIN"].forEach((name: string) => {
+            btns.forEach((name: string) => {
                 if (matchSlash === name)
                     newStyleString += `#${name}BTN {fill: #cc00cc; width: ${svgDimHover}; height: ${svgDimHover};}`;
                 else 
