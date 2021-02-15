@@ -8,8 +8,8 @@ export interface BodyTextTypes {
 const BodyTextAtom = atom<BodyTextTypes>({
     key: "bodyText",
     default: {
-        bannerText: "text",
-        headerText: "t"
+        bannerText: "Lorem ipsum",
+        headerText: "dolor sit amet"
     }
 });
 
