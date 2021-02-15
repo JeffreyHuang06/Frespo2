@@ -1,0 +1,60 @@
+@use '../../css/Generic.scss';
+
+$input-width: 25vw;
+$username-input-height: 30px;
+$pwd-input-height: 20px;
+
+.Login {
+    & > * {
+        margin-bottom: 10px;
+    }
+
+    & input {
+        outline: none;
+        width: $input-width;
+
+        border-radius: .25em;
+        border-color: white;
+        border-style: solid;
+        transition: 200ms;
+
+        &:hover, &:focus {
+            border-color: black;
+        }
+        
+        &#usernameInput {
+            height: $username-input-height;
+        }
+        &#pwdInput {
+            height: $pwd-input-height;
+        }
+    }
+
+    & .checkboxInput {
+        width: $input-width;
+    }
+
+    & input[type=checkbox] {
+        width: fit-content;
+    }
+}
+
+.before {
+    &-username::before, &-pwd:before {
+        content: "";
+        display: block;
+        position: absolute;
+
+        width: $input-width;
+        border-bottom: 2px black solid;
+        pointer-events: none;
+    }
+
+    &-username::before {
+        height: $username-input-height;
+    }
+
+    &-pwd::before {
+        height: $pwd-input-height;
+    }
+}
