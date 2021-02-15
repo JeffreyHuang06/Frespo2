@@ -24,6 +24,7 @@
 .Banner svg {
     fill: black;
     transition: 125ms;
+    cursor: pointer;
 
     &:hover {
         fill: Generic.$purple2;
