@@ -26,7 +26,7 @@
 
         $conn->close();
 
-        echo $worked ? "true" : "false";
+        echo $worked;
     }
 
     if ($_POST){
