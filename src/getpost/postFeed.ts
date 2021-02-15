@@ -1,7 +1,7 @@
 import axios from 'axios'
 import env from 'react-dotenv'
 
-const postFeed = async(title: string, content: string): Promise<string> => {
+const postFeed = async(title: string, content: string): Promise<boolean> => {
     const res = await axios({
         method: 'post',
         url: `${env.API_PATH}/postFeedItems.php`,
