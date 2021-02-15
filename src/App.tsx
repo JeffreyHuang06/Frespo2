@@ -2,9 +2,11 @@ import React from 'react'
 
 import Banner from './components/Banner'
 import Header from './components/Header'
+
 import Feed from './components/Feed'
 import FormFeed from './components/FormFeed'
 import About from  './components/About'
+import Login from './components/Login'
 
 import { useRecoilValue } from 'recoil'
 import BodyTextAtom, {BodyTextTypes} from './state/bodyTextAtom'
@@ -24,29 +26,25 @@ const App = () => {
 
             <Switch>
                 <Route path="/home">
-                    <>
-                        <React.Suspense fallback={<div>Loading...</div>}>
-                            <Feed />
-                        </React.Suspense>
-                    </>
+                    <React.Suspense fallback={<div>Loading...</div>}>
+                        <Feed />
+                    </React.Suspense>
                 </Route>
 
                 <Route path="/post">
-                    <>
-                        <FormFeed />
-                    </>
+                    <FormFeed />
                 </Route>
 
                 <Route path="/about">
-                    <>
-                        <About />
-                    </>
+                    <About />
+                </Route>
+
+                <Route path="/login">
+                    <Login />
                 </Route>
 
                 <Route path="/404">
-                    <>
-                        <FallThrough />
-                    </>
+                    <FallThrough />
                 </Route>
 
                 <Route exact path="/">
