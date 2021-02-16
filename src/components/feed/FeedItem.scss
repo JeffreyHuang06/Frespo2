@@ -2,6 +2,7 @@
     border: 2px solid black;
     width: 90%;
     padding-left: 1em;
+    position: relative;
 
     & > * {
         word-wrap: break-word;
@@ -12,7 +13,21 @@
         text-decoration: underline;
     }
 
-    & *:not(.whom) {
+    & > *:not(.whom) {
         margin-left: 1em;
+    }
+
+    .trash {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        width: fit-content;
+        height: fit-content;
+        margin-block-start: 1em;
+        margin-right: 1em;
+
+        cursor: pointer;
     }
 }
