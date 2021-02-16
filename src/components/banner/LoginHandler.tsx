@@ -19,6 +19,7 @@ export default function LoginHandler() {
         } else {
             Cookies.remove("username");
             Cookies.remove("password");
+            Cookies.remove("isadmin");
 
             window.location.reload();
         }
