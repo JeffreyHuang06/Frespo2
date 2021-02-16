@@ -7,6 +7,7 @@ export interface FeedItemType {
     date: string;
     hash: string;
     whom: string;
+    wasadmin: string;
 }
 
 const getFeed = async(): Promise<FeedItemType[] | null> => {
@@ -15,6 +16,8 @@ const getFeed = async(): Promise<FeedItemType[] | null> => {
         method: 'get',
         url: `${env.API_PATH}/getFeedItems.php`,
     });
+
+    console.log(res);
 
     return res.data;
 }

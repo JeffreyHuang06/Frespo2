@@ -24,13 +24,15 @@
             $date = $row['date_posted'];
             $hash = $row['hash'];
             $whom = $row['whom'];
+            $wasadmin = $row['wasadmin'];
 
             $echoresult .= json_encode([
                 "title" => $title,
                 "content" => $content,
                 "date" => $date,
                 "hash" => $hash,
-                "whom" => $whom
+                "whom" => $whom,
+                "wasadmin" => $wasadmin
             ]) . ',';
         }
 

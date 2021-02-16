@@ -5,7 +5,7 @@
     $rest_json = file_get_contents("php://input");
     $_POST = json_decode($rest_json, true);
 
-    function writeSQL($t, $c, $w){
+    function writeSQL($t, $c, $w, $wa){
         require './credentials.php';
 
         $conn = new mysqli($servername, $username, $password, $dbname . "feed");
@@ -21,8 +21,8 @@
         $date = date("Y-m-d H:i:s");
         $hash = hash('sha256', $t . $c . $date);
 
-        $stmt = $conn->prepare("INSERT INTO feed VALUES (?,?,?,?,?)");
-        $stmt->bind_param("sssss", $t, $c, $date, $hash, $w);
+        $stmt = $conn->prepare("INSERT INTO feed VALUES (?,?,?,?,?,?)");
+        $stmt->bind_param("sssssi", $t, $c, $date, $hash, $w, $wa);
         $worked = $stmt->execute();
 
         $conn->close();
@@ -37,8 +37,9 @@
         $title = $_POST['title'];
         $content = $_POST['content'];
         $whom = $_POST['whom'];
+        $wasadmin = $_POST['wasadmin'];
 
-        writeSQL($title, $content, $whom);
+        writeSQL($title, $content, $whom, $wasadmin);
         
     } else {
         echo "error: invalid form input";
