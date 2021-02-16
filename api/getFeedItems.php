@@ -23,12 +23,14 @@
             $content = html_entity_decode($row['content']);
             $date = $row['date_posted'];
             $hash = $row['hash'];
+            $whom = $row['whom'];
 
             $echoresult .= json_encode([
                 "title" => $title,
                 "content" => $content,
                 "date" => $date,
-                "hash" => $hash
+                "hash" => $hash,
+                "whom" => $whom
             ]) . ',';
         }
 

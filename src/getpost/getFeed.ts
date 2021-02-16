@@ -6,6 +6,7 @@ export interface FeedItemType {
     content: string;
     date: string;
     hash: string;
+    whom: string;
 }
 
 const getFeed = async(): Promise<FeedItemType[] | null> => {

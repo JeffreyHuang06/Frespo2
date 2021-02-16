@@ -24,13 +24,14 @@ const Feed = () => {
         (
             async() => {
                 const res: FeedItemType[] | null = await getFeed();
-                console.log(res);
+
                 if (res !== null) setFeedItems(res);
                 else setFeedItems([{
                     title: "No posts made",
                     content: "",
                     date: "Null",
-                    hash: "Null"
+                    hash: "Null",
+                    whom: "Null"
                 }]);
             }
         )();
@@ -39,12 +40,13 @@ const Feed = () => {
     return (
         <>
             <div className='body Feed'>
-                {feedItems.map(({title, content, date, hash}) => 
+                {feedItems.map(({title, content, date, hash, whom}) => 
                     <FeedItem
                         title={title}
                         content={content}
                         date={date}
                         hash={hash}
+                        whom={whom}
                     />
                 )}
             </div>
