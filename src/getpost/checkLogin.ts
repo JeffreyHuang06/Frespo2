@@ -6,7 +6,7 @@ interface loginType {
     isadmin: string;
 }
 
-const checkLogin = async(username: string, pwd: string): Promise<loginType> => {
+const checkLogin = async(username: string, pwd: string): Promise<loginType | boolean> => {
     const res = await axios({
         method: 'post',
         url: `${env.API_PATH}/login.php`,
@@ -16,7 +16,8 @@ const checkLogin = async(username: string, pwd: string): Promise<loginType> => {
         }
     });
     
-    return res.data;
+    if (res.status === 200) return res.data;
+    else return false;
 }
 
 export default checkLogin;
