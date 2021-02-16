@@ -21,7 +21,7 @@ const postFeed = async(title: string, content: string): Promise<boolean> => {
             "wasadmin": wasadmin
         }
     });
-    console.log(res);
+
     return res.data;
 }
 

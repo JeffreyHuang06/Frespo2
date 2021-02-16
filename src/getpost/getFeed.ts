@@ -17,8 +17,6 @@ const getFeed = async(): Promise<FeedItemType[] | null> => {
         url: `${env.API_PATH}/getFeedItems.php`,
     });
 
-    console.log(res);
-
     return res.data;
 }
 
