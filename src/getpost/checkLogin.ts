@@ -1,5 +1,6 @@
 import axios from 'axios'
 import env from 'react-dotenv'
+import Cookies from 'js-cookie'
 
 interface loginType {
     valid: boolean;
@@ -18,6 +19,11 @@ const checkLogin = async(username: string, pwd: string): Promise<loginType | boo
     
     if (res.status === 200) return res.data;
     else return false;
+}
+
+export const checkAdmin = (): boolean => {
+    const isadmin = Cookies.get("isadmin");
+    return isadmin === "1";
 }
 
 export default checkLogin;
