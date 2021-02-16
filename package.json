@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.21.1",
-    "dateformat": "^4.5.1",
+    "date-fns": "^2.17.0",
     "js-cookie": "^2.2.1",
     "pwacompat": "^2.0.17",
     "react": "^17.0.1",
@@ -19,7 +19,8 @@
     "start": "react-dotenv && react-scripts start",
     "build": "react-dotenv && react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:source": "react-dotenv && GENERATE_SOURCEMAP=true react-scripts build"
   },
   "eslintConfig": {
     "extends": [

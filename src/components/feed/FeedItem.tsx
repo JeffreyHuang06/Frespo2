@@ -3,8 +3,9 @@ import If from '../If'
 import {checkAdmin} from '../../getpost/checkLogin'
 import deleteItem from '../../getpost/deleteItem'
 
+import {format} from 'date-fns'
+
 import './FeedItem.scss'
-var dateFormat = require('dateformat');
 
 interface Props {
     title: string;
@@ -24,7 +25,8 @@ const FeedItem: React.FC<Props> = ({title, content, date, hash, whom, wasadmin})
     const isadmin: boolean = checkAdmin();
 
     const dateObj = new Date(date);
-    const time = dateFormat(dateObj, "m/dd/yy");
+    // console.log(dateObj);
+    const time = format(dateObj, "MMM d, y 'at' h:maaa");
 
     const handleClick = async () => {
         const res = await deleteItem(title, content, hash, whom);
