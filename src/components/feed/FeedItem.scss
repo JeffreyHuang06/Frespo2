@@ -6,10 +6,13 @@
     & > * {
         word-wrap: break-word;
     }
-    // & > .title {
 
-    // }
-    // & > .content {
+    & .whom {
+        font-size: 75%;
+        text-decoration: underline;
+    }
 
-    // }
+    & *:not(.whom) {
+        margin-left: 1em;
+    }
 }
