@@ -37,6 +37,14 @@ $pwd-input-height: 20px;
     & input[type=checkbox] {
         width: fit-content;
     }
+
+    .failed {
+        color: red;
+    }
+
+    .success {
+        color: green;
+    }
 }
 
 .before {

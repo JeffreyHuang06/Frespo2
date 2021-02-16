@@ -1,17 +1,25 @@
 import React, {useState, useEffect} from 'react'
 
 import checkLogin from '../getpost/checkLogin'
+import loginUser from '../getpost/loginUser'
 
 import {useSetRecoilState} from 'recoil'
 import BodyTextAtom, {BodyTextTypes} from '../state/bodyTextAtom'
 
 import './login/Login.scss'
 
+interface msgType {
+    msg: string;
+    style: string;
+}
+
 export default function Login() {
     const [username, setUsername] = useState<string>("");
     const [pwd, setPwd] = useState<string>("");
     const setBodyText = useSetRecoilState<BodyTextTypes>(BodyTextAtom);
     const [isChecked, setIsChecked] = useState(false);
+    const [msg, setMsg] = useState<msgType>({msg: "", style: ""});
+    const [lWarning, setLWarning] = useState<string>("");
 
     useEffect(() => {
         setBodyText({
@@ -20,6 +28,16 @@ export default function Login() {
         });
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    const validateUsername = (): boolean => {
+        if (username.includes(" ")){
+            setLWarning("Username can't include spaces");
+            return false;
+        } else {
+            setLWarning("");
+            return true;
+        }
+    }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>, field: string) => {
         switch (field) {
@@ -40,7 +58,36 @@ export default function Login() {
     const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const {valid, isadmin} = await checkLogin(username, pwd);
+        if (!validateUsername()) return;
+
+        const res = await checkLogin(username, pwd);
+
+        if (typeof res === "boolean"){
+            setMsg({
+                msg: "Login Failed",
+                style: "failed"
+            });
+            return;
+        }
+
+        const {valid, isadmin} = res;
+
+        if (valid){
+            loginUser(username, pwd, isadmin === "1");
+            setMsg({
+                msg: "Login Successful. You will be redirected soon.",
+                style: "success"
+            });
+            
+            setTimeout(() => {
+                window.location.href = "/home";
+            }, 3000);
+        } else {
+            setMsg({
+                msg: "Login Failed",
+                style: "failed"
+            });
+        }
     }
 
     return (
@@ -58,6 +105,7 @@ export default function Login() {
                         required
                         id="usernameInput"
                     />
+                    <span>{lWarning}</span>
 
                     <div className="before-pwd">
                         <input
@@ -67,9 +115,12 @@ export default function Login() {
                             onChange={e => {handleChange(e, 'pwd')}}
                             autoComplete='off'
                             placeholder="Password"
+                            required
                             id="pwdInput"
                         />
                     </div>
+
+                    <br />
 
                     <div className="checkboxInput">
                         Remember me
@@ -81,9 +132,13 @@ export default function Login() {
                         />
                     </div>
 
-                    <br />
+                    <div className={msg.style}>{msg.msg}</div>
 
                     <button>Login</button>
+
+                    <br />
+
+                    <p>DISCLAIMER: THIS SITE USES COOKIES IF YOU LOGIN</p>
 
                 </form>
             </div>
