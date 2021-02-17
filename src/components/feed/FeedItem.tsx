@@ -24,8 +24,8 @@ const FeedItem: React.FC<Props> = ({title, content, date, hash, whom, wasadmin})
 
     const isadmin: boolean = checkAdmin();
 
-    const dateObj = new Date(date);
-    // console.log(dateObj);
+    const correctedDate = date.replaceAll('-','/'); // because safari wants to be DIFFERENT
+    const dateObj = new Date(correctedDate);
     const time = format(dateObj, "MMM d, y 'at' h:maaa");
 
     const handleClick = async () => {
